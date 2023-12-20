@@ -15,10 +15,16 @@ dependencyResolutionManagement {
 
 rootProject.name = "Find a Pair"
 include(":app")
-include(":commom-ui")
+
+include(":common-ui")
+
 include(":menu-impl")
 include(":menu-api")
+
 include(":game-impl")
-include(":lib")
+include(":game-api")
+
 include(":end-api")
 include(":end-impl")
+
+
