@@ -20,12 +20,21 @@ object Typography {
         fontWeight = FontWeight(400),
         color = Color(0xFF000000)
     )
-    val scoreText = TextStyle(
+    val timeText = TextStyle(
         fontSize = 16.sp,
         lineHeight = 20.sp,
         fontWeight = FontWeight(400),
         color = Color(0xFF000000)
     )
+
+    val rules = TextStyle(
+        fontSize = 16.sp,
+        lineHeight = 20.sp,
+        fontWeight = FontWeight(400),
+        color = Color(0xFF000000),
+        textAlign = TextAlign.Center
+    )
+
     val congratulation = TextStyle(
         fontSize = 30.sp,
         lineHeight = 34.sp,

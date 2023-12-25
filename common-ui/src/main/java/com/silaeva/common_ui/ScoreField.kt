@@ -1,6 +1,7 @@
 package com.silaeva.common_ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -17,19 +18,20 @@ import com.silaeva.common_ui.typography.Typography
 fun ScoreField(
     text: String
 ) {
-    Row() {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.End
+    ) {
         Image(
             painter = painterResource(id = R.drawable.coin),
             contentDescription = "Score",
             modifier = Modifier
                 .height(24.dp)
-                .align(Alignment.CenterVertically)
         )
         Text(
             text = text,
             modifier = Modifier
-                .padding(4.dp)
-                .align(Alignment.CenterVertically),
+                .padding(4.dp),
             style = Typography.description,
             textAlign = TextAlign.End
         )

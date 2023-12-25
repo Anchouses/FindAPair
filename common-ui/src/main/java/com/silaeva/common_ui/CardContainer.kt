@@ -20,7 +20,7 @@ fun CardContainer(
         colors = CardDefaults.cardColors(
             containerColor = Colors.gray
         ),
-        shape = RoundedCornerShape(24.dp),
+        shape = RoundedCornerShape(16.dp),
         modifier = modifier
             .fillMaxWidth()
             .padding(8.dp),

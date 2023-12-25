@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="congratulation">[CONGRATULATION!]</string>
+    <string name="great">[Great!You won!]</string>
+    <string name="double_reward">Double Reward</string>
+</resources>

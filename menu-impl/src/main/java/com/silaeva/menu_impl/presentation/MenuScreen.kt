@@ -40,9 +40,7 @@ fun MenuScreen (
                 .align(Alignment.End)
                 .padding(24.dp)
         ) {
-            ScoreField(
-                text = "${viewModel.score}"
-            )
+            ScoreField(text = "${viewModel.score}")
         }
 
         Spacer(modifier = Modifier.height(130.dp))
@@ -65,7 +63,7 @@ fun MenuScreen (
         }
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { viewModel.onPlayButtonClick() },
             modifier = Modifier
                 .padding(24.dp)
                 .align(Alignment.CenterHorizontally)
