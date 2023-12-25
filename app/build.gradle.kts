@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.silaeva.findapair"
-        minSdk = 26
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -60,6 +60,9 @@ dependencies {
     implementation(libs.cicerone)
 
     implementation(libs.hilt)
+    implementation(project(":menu-impl"))
+    implementation(project(":game-impl"))
+    implementation(project(":end-impl"))
     kapt(libs.hilt.compiler)
 
     testImplementation(libs.test.junit)
