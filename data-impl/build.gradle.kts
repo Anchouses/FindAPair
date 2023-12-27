@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.silaeva.menu_impl"
+    namespace = "com.silaeva.data_impl"
     compileSdk = 34
 
     defaultConfig {
@@ -25,7 +25,6 @@ android {
             )
         }
     }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -52,6 +51,8 @@ dependencies {
     implementation(project(":game-api"))
     implementation(project(":end-api"))
     implementation(project(":game-impl"))
+    implementation(project(":menu-impl"))
+    implementation(project(":end-impl"))
 
     val composeBom = platform(libs.android.compose.bom)
     implementation(composeBom)
@@ -69,6 +70,7 @@ dependencies {
     implementation (libs.androidx.room.runtime)
     annotationProcessor (libs.androidx.room.compiler)
     kapt (libs.androidx.room.runtime)
+
 
     implementation(libs.cicerone)
 

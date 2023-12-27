@@ -3,6 +3,7 @@ package com.silaeva.end_impl.presentation
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -54,13 +55,14 @@ fun EndGameScreen(
         CardContainer(
             modifier = Modifier
                 .padding(bottom = 16.dp)
-                .align(Alignment.CenterHorizontally)
                 .fillMaxWidth(0.9f)
                 .height(100.dp)
         ) {
-            ScoreField(
-                text = "100"
-            )
+            Box(
+                modifier = Modifier
+                    .padding(top = 24.dp)
+                    .align(Alignment.CenterHorizontally),
+            ) { ScoreField(text = "100") }
         }
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -82,11 +84,11 @@ fun EndGameScreen(
                     .align(Alignment.CenterVertically)
                     .width(90.dp)
                     .height(90.dp)
-                    .clickable (
-                    onClick = {
-                        viewModel.onHomeButtonClick()
-                    }
-                )
+                    .clickable(
+                        onClick = {
+                            viewModel.onHomeButtonClick()
+                        }
+                    )
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.baseline_cottage_24),
@@ -94,7 +96,8 @@ fun EndGameScreen(
                     modifier = Modifier
                         .align(Alignment.CenterHorizontally)
                         .width(70.dp),
-                    alignment = Alignment.Center)
+                    alignment = Alignment.Center
+                )
             }
         }
     }

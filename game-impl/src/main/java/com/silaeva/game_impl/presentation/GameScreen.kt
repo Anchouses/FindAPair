@@ -1,9 +1,9 @@
 package com.silaeva.game_impl.presentation
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,7 +20,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -32,11 +31,7 @@ import com.silaeva.common_ui.ScoreField
 import com.silaeva.common_ui.typography.Colors
 import com.silaeva.common_ui.typography.Typography
 import com.silaeva.game_impl.R
-import com.silaeva.game_impl.domain.Card
 import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 @Composable
 fun GameScreen(viewModel: GameViewModel) {
@@ -49,7 +44,7 @@ fun GameScreen(viewModel: GameViewModel) {
                 horizontalArrangement = Arrangement.Absolute.SpaceBetween,
             ) {
                 TimerField(viewModel)
-                ScoreField("${ viewModel.score.intValue }")
+                Box { ScoreField("${viewModel.score.intValue}") }
             }
             Text(
                 text = stringResource(id = R.string.timer_comment),
@@ -85,45 +80,7 @@ fun GameScreen(viewModel: GameViewModel) {
 fun PlayField(
     viewModel: GameViewModel
 ) {
-    val cards = remember { viewModel.randomDiamondList }
-
-    var firstCard: Card? = remember { null }
-
-    fun cardClick(card: Card) {
-
-        if (card.isFlipped) {
-            Log.d("Click", "Клик по открытой карте")
-            return
-        }  // если карта уже открыта, то ничего не делаем
-
-        if (firstCard == null) {  //если это первая открытая карта
-            firstCard = card
-            card.isFlipped = true
-            Log.d("Click", "Первая открытая карта")
-        }
-        else {   // если это вторая открытая карта
-
-            Log.d("Click", "Вторая открытая карта")
-            card.isFlipped = true
-
-            if (card.image == firstCard?.image) { // если карты совпадают
-                Log.d("Click", "Изображения карт совпали")
-                // обнуляем первую карту
-                firstCard = null
-                viewModel.count++
-            } else {  //если карты не совпадают
-                Log.d("Click", "Изображения не совпали")
-                //переворачиваем обе карты
-                GlobalScope.launch {
-                    delay(1000)
-                    firstCard?.let { it.isFlipped = false }
-                    card.isFlipped = false
-                    firstCard = null
-                }
-            }
-        }
-    }
-
+    val cards by viewModel.cardsFlow.collectAsState()
     LazyVerticalGrid(
         columns = GridCells.Fixed(4),
         modifier = Modifier
@@ -146,12 +103,12 @@ fun PlayField(
                         viewModel.startGame = true
                     }
 
-                    cardClick(cards[index])
+                    viewModel.onCardClick(cards[index])
 
                     if (viewModel.count == viewModel.maxPair) viewModel.stopTimer()
                 }
             ) {
-                if (cards[index].isFlipped) {   // если карта перевернута показываем бриллиантик
+                if (cards[index].isOpen) {   // если карта перевернута показываем бриллиантик
                     Image(
                         painter = painterResource(id = cards[index].image),
                         contentDescription = null,

@@ -2,6 +2,7 @@ package com.silaeva.menu_impl.presentation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -9,7 +10,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,7 +34,8 @@ fun MenuScreen (
 ) {
     Column(
         modifier = Modifier
-            .fillMaxSize(),
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center
 
     ) {
@@ -40,7 +44,7 @@ fun MenuScreen (
                 .align(Alignment.End)
                 .padding(24.dp)
         ) {
-            ScoreField(text = "${viewModel.score}")
+            Box { ScoreField(text = "${viewModel.score}") }
         }
 
         Spacer(modifier = Modifier.height(130.dp))

@@ -1,6 +1,6 @@
 package com.silaeva.menu_impl.di
 
-import com.silaeva.menu_impl.data.MenuRepositoryImpl
+import com.silaeva.menu_impl.data.repository.MenuRepositoryImpl
 import com.silaeva.menu_impl.domain.MenuRepository
 import dagger.Binds
 import dagger.Module

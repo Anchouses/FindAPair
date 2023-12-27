@@ -62,6 +62,8 @@ dependencies {
     implementation(libs.android.appcompat)
     implementation(libs.android.material)
     implementation(libs.android.fragment)
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.lifecycle.livedata.ktx)
 
     implementation(libs.cicerone)
 

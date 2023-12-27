@@ -22,6 +22,7 @@ class GameFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         binding = FragmentGameBinding.inflate(layoutInflater)
         return binding.root
     }

@@ -1,4 +1,4 @@
-package com.silaeva.findapair.activity
+package com.silaeva.findapair.presentation.activity
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -7,7 +7,7 @@ import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.silaeva.findapair.R
 import com.silaeva.findapair.databinding.ActivityMainBinding
-import com.silaeva.findapair.viewmodel.MainViewModel
+import com.silaeva.findapair.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -26,7 +26,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.goTo()
+
+        viewModel.goTo(1)
     }
 
     override fun onResumeFragments() {

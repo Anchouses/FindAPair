@@ -11,6 +11,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/common-ui" />
+            <option value="$PROJECT_DIR$/data-api" />
+            <option value="$PROJECT_DIR$/data-impl" />
             <option value="$PROJECT_DIR$/end-api" />
             <option value="$PROJECT_DIR$/end-impl" />
             <option value="$PROJECT_DIR$/game-api" />
