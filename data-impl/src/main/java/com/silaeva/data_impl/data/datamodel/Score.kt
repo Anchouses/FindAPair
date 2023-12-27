@@ -1,4 +1,4 @@
-package com.silaeva.menu_impl.data.datamodel
+package com.silaeva.data_impl.data.datamodel
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

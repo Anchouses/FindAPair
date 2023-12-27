@@ -3,9 +3,9 @@ package com.silaeva.game_impl.presentation
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -31,7 +31,6 @@ import com.silaeva.common_ui.ScoreField
 import com.silaeva.common_ui.typography.Colors
 import com.silaeva.common_ui.typography.Typography
 import com.silaeva.game_impl.R
-import kotlinx.coroutines.DelicateCoroutinesApi
 
 @Composable
 fun GameScreen(viewModel: GameViewModel) {
@@ -39,12 +38,14 @@ fun GameScreen(viewModel: GameViewModel) {
     Column() {
         Column() {
             Row(
-                modifier = Modifier.padding(start = 24.dp, top = 24.dp, end = 24.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 24.dp, top = 24.dp, end = 24.dp),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Absolute.SpaceBetween,
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 TimerField(viewModel)
-                Box { ScoreField("${viewModel.score.intValue}") }
+                ScoreField("${viewModel.score.intValue}")
             }
             Text(
                 text = stringResource(id = R.string.timer_comment),
@@ -75,7 +76,7 @@ fun GameScreen(viewModel: GameViewModel) {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class, DelicateCoroutinesApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PlayField(
     viewModel: GameViewModel
@@ -114,7 +115,7 @@ fun PlayField(
                         contentDescription = null,
                         modifier = Modifier
                             .padding(8.dp)
-                            .align(Alignment.CenterHorizontally)
+                            .fillMaxSize()
                     )
                 } else {   // иначе показываем оборотную сторону
                     Image(
@@ -122,7 +123,7 @@ fun PlayField(
                         contentDescription = null,
                         modifier = Modifier
                             .padding(8.dp)
-                            .align(Alignment.CenterHorizontally),
+                            .fillMaxSize()
                     )
                 }
             }
@@ -139,22 +140,23 @@ fun TimerField(viewModel: GameViewModel) {
             .fillMaxWidth(0.5f)
             .height(30.dp)
             .background(color = Colors.gray, shape = RoundedCornerShape(18.dp)),
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
             painter = painterResource(R.drawable.baseline_access_alarms_24),
             contentDescription = null,
             modifier = Modifier
-                .align(Alignment.CenterVertically)
                 .height(30.dp),
             alignment = Alignment.CenterStart
         )
         Text(
             text = timer.formatTime(),
             modifier = Modifier
-                .padding(4.dp)
-                .align(Alignment.CenterVertically),
+                .padding(start = 50.dp),
             style = Typography.timeText
         )
+
+
     }
 }
 

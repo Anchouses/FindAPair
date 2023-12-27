@@ -1,19 +1,18 @@
-package com.silaeva.menu_impl.data.repository
+package com.silaeva.data_impl.data.repository
 
 import android.content.Context
 import androidx.room.Room
-import com.silaeva.menu_impl.data.database.ScoreDatabase
-import com.silaeva.menu_impl.data.datamodel.Score
-import com.silaeva.menu_impl.domain.MenuRepository
+import com.silaeva.data_impl.data.database.ScoreDatabase
+import com.silaeva.data_impl.data.datamodel.Score
 import kotlinx.coroutines.flow.Flow
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
-import javax.inject.Inject
 
 const val DATABASE_NAME = "Score"
-class MenuRepositoryImpl @Inject constructor(
+
+class RepositoryImpl (
     context: Context
-): MenuRepository {
+): RepositoryInterface {
 
     private val database: ScoreDatabase = Room.databaseBuilder(
         context.applicationContext,

@@ -27,7 +27,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel.goTo(1)
+        if (viewModel.isNav == 0) {
+            viewModel.goTo()
+        }
     }
 
     override fun onResumeFragments() {

@@ -52,6 +52,7 @@ dependencies {
     implementation(project(":game-api"))
     implementation(project(":end-api"))
     implementation(project(":game-impl"))
+    implementation(project(":data-impl"))
 
     val composeBom = platform(libs.android.compose.bom)
     implementation(composeBom)

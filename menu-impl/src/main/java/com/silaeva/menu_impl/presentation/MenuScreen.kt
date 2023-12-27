@@ -44,6 +44,8 @@ fun MenuScreen (
                 .align(Alignment.End)
                 .padding(24.dp)
         ) {
+            //val score by viewModel.score.collectAsState(initial = Score(0, 0))
+
             Box { ScoreField(text = "${viewModel.score}") }
         }
 
@@ -56,14 +58,25 @@ fun MenuScreen (
                 .width(230.dp)
                 .height(230.dp)
         ) {
-            Text(
-                text = stringResource(id = R.string.game_logo),
-                modifier = Modifier
-                    .padding(16.dp)
-                    .align(Alignment.CenterHorizontally),
-                style = Typography.title,
-                maxLines = 2
-            )
+            Column (
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.SpaceEvenly
+            ){
+                Text(
+                    text = stringResource(id = R.string.game),
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .align(Alignment.CenterHorizontally),
+                    style = Typography.title
+                )
+                Text(
+                    text = stringResource(id = R.string.logo),
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .align(Alignment.CenterHorizontally),
+                    style = Typography.title
+                )
+            }
         }
 
         Button(

@@ -46,13 +46,8 @@ android {
 
 dependencies {
 
-    implementation(project(":common-ui"))
-    implementation(project(":menu-api"))
-    implementation(project(":game-api"))
-    implementation(project(":end-api"))
+
     implementation(project(":game-impl"))
-    implementation(project(":menu-impl"))
-    implementation(project(":end-impl"))
 
     val composeBom = platform(libs.android.compose.bom)
     implementation(composeBom)

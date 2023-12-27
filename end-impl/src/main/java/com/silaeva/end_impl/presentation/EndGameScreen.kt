@@ -35,7 +35,7 @@ fun EndGameScreen(
         verticalArrangement = Arrangement.Center
     ) {
         Image(
-            painter = painterResource(id = R.drawable.baseline_emoji_events_24),
+            painter = painterResource(id = R.drawable.cup),
             contentDescription = null,
             modifier = Modifier
                 .padding(16.dp)
