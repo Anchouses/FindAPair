@@ -1,0 +1,90 @@
+[versions]
+#Navigation
+activity-compose = "1.8.2"
+androidx-core-ktx = "1.12.0"
+cicerone-ver = "7.1"
+
+#Coil
+coil-ver = "2.5.0"
+
+#DI
+converter-scalars = "2.9.0"
+core-ktx = "1.12.0"
+hilt-ver = "2.50"
+
+#Compose
+android-compose-ver = "2023.10.01"
+
+#Android
+android-core-ver = "1.12.0"
+android-appcompat-ver = "1.6.1"
+android-material-ver = "1.11.0"
+activity_ver = "1.8.2"
+fragment_ver = "1.6.2"
+
+#Tests
+lifecycle-runtime-ktx = "2.6.2"
+logging-interceptor = "5.0.0-alpha.11"
+material = "1.11.0"
+okhttp = "5.0.0-alpha.11"
+retrofit = "2.9.0"
+room-runtime = "2.6.1"
+test-junit-ver = "4.13.2"
+test-junit-android-ver = "1.1.5"
+test-espresso-ver = "3.5.1"
+agp = "8.2.0"
+org-jetbrains-kotlin-android = "1.9.20"
+legacy-support-v4 = "1.0.0"
+lifecycle-livedata-ktx = "2.6.2"
+lifecycle-viewmodel-ktx = "2.6.2"
+org-jetbrains-kotlin-jvm = "1.9.20"
+lifecycle-viewmodel-compose = "2.6.2"
+
+
+[libraries]
+#Navigation
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
+androidx-core-ktx-1_9_0 = { module = "androidx.core:core-ktx", version.ref = "androidx-core-ktx" }
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room-runtime" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room-runtime" }
+cicerone = { group = "com.github.terrakok", name = "cicerone", version.ref = "cicerone-ver" }
+
+#Coil
+coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil-ver" }
+
+#DI
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converter-scalars" }
+converter-scalars = { module = "com.squareup.retrofit2:converter-scalars", version.ref = "converter-scalars" }
+core-ktx-1_9_0 = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
+hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt-ver" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt-ver" }
+
+#Compose
+android-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "android-compose-ver" }
+android-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+android-compose-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+
+#Android
+android-core = { group = "androidx.core", name = "core-ktx", version.ref = "android-core-ver" }
+android-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "android-appcompat-ver" }
+android-material = { group = "com.google.android.material", name = "material", version.ref = "android-material-ver" }
+android-activity = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity_ver" }
+android-fragment = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragment_ver" }
+
+#Tests
+logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "logging-interceptor" }
+material-1_10_0 = { module = "com.google.android.material:material", version.ref = "material" }
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+test-junit = { group = "junit", name = "junit", version.ref = "test-junit-ver" }
+test-junit-android = { group = "androidx.test.ext", name = "junit", version.ref = "test-junit-android-ver" }
+test-espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "test-espresso-ver" }
+legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacy-support-v4" }
+lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle-livedata-ktx" }
+lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle-viewmodel-ktx" }
+androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle-viewmodel-compose" }
+[plugins]
+com-android-library = { id = "com.android.library", version.ref = "agp" }
+org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }
+org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org-jetbrains-kotlin-jvm" }

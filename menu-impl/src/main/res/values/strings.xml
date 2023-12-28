@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="game">Game</string>
+    <string name="logo">Logo №1</string>
+    <string name="play_button">PLAY</string>
+</resources>
