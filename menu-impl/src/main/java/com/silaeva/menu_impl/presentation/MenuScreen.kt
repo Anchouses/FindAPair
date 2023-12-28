@@ -49,7 +49,7 @@ fun MenuScreen (
             Box { ScoreField(text = "${viewModel.score}") }
         }
 
-        Spacer(modifier = Modifier.height(130.dp))
+        Spacer(modifier = Modifier.height(100.dp))
 
         CardContainer(
             modifier = Modifier

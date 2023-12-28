@@ -59,10 +59,16 @@ dependencies {
 
     implementation(libs.cicerone)
 
+    implementation (libs.androidx.room.runtime)
+    //annotationProcessor (libs.androidx.room.compiler)
+    implementation (libs.androidx.room.ktx)
+    kapt (libs.androidx.room.runtime)
+
     implementation(libs.hilt)
     implementation(project(":menu-impl"))
     implementation(project(":game-impl"))
     implementation(project(":end-impl"))
+    implementation(project(":data-impl"))
     kapt(libs.hilt.compiler)
 
     testImplementation(libs.test.junit)

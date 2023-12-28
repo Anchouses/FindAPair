@@ -51,6 +51,7 @@ dependencies {
     implementation(project(":menu-api"))
     implementation(project(":game-api"))
     implementation(project(":end-api"))
+    implementation(project(":data-impl"))
 
     val composeBom = platform(libs.android.compose.bom)
     implementation(composeBom)
@@ -64,6 +65,11 @@ dependencies {
     implementation(libs.android.fragment)
 
     implementation(libs.cicerone)
+
+    implementation (libs.androidx.room.runtime)
+    //annotationProcessor (libs.androidx.room.compiler)
+    implementation (libs.androidx.room.ktx)
+    kapt (libs.androidx.room.runtime)
 
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)

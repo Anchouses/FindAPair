@@ -69,6 +69,7 @@ dependencies {
 
     implementation (libs.androidx.room.runtime)
     annotationProcessor (libs.androidx.room.compiler)
+    implementation (libs.androidx.room.ktx)
     kapt (libs.androidx.room.runtime)
 
     implementation(libs.cicerone)

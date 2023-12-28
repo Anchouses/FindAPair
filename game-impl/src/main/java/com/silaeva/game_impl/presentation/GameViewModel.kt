@@ -3,7 +3,9 @@ package com.silaeva.game_impl.presentation
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.silaeva.data_impl.data.datamodel.Score
 import com.silaeva.end_api.EndGameNavigator
+import com.silaeva.data_impl.data.repository.RepositoryImpl
 import com.silaeva.game_impl.data.DataSource
 import com.silaeva.game_impl.domain.Card
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,41 +14,31 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import java.util.UUID
 import javax.inject.Inject
 import kotlin.Unit
 
 @HiltViewModel
 class GameViewModel @Inject constructor(
     private val endGameNavigator: EndGameNavigator,
-    private val dataSource: DataSource
+    private val dataSource: DataSource,
+    private val scoreRepositoryImpl: RepositoryImpl
 ) : ViewModel() {
 
-    //dataSource.diamondList
     private val diamondList = dataSource.diamondList
-//        listOf(
-////        Diamond(R.drawable.blue_circle),
-////        Diamond(R.drawable.blue_circle),
-//        Diamond(R.drawable.blue_circle),
-//        Diamond(R.drawable.blue_rhombus),
-////        Diamond(R.drawable.green_circle),
-////        Diamond(R.drawable.orange),
-////        Diamond(R.drawable.pink_circle),
-////        Diamond(R.drawable.purple_circle),
-////        Diamond(R.drawable.red_circle),
-////        Diamond(R.drawable.teal_circle),
-////        Diamond(R.drawable.white_circle),
-////        Diamond(R.drawable.yellow_circle),
-//    )
 
-    private val randomDiamondList = (diamondList + diamondList).shuffled().map { Card(image = it.image) }
+    private val randomDiamondList =
+        (diamondList + diamondList).shuffled().map { Card(image = it.image) }
+
     val maxPair = diamondList.size
     private val maxTime = 20
     var count = 0
+
     var score = mutableIntStateOf(0)
+
     private val _timer = MutableStateFlow(0L)
     val timer = _timer.asStateFlow()
     var startGame = false
+
     private var timerJob: Job? = null
     private var wait: Job? = null
 
@@ -83,20 +75,26 @@ class GameViewModel @Inject constructor(
     }
 
     private fun onTimeOut() {
+        scoreSave()
         endGameNavigator.navigateToEnd()
+    }
+
+    private fun scoreSave() {
+        scoreRepositoryImpl.addScore(Score(score = score.intValue))
     }
 
     fun onCardClick(card: Card) {
         val result = cardComparing(card, firstCard)
 
         if (result != Result.OpenCardClick) {
-            cardsFlow.value = cardsFlow.value.map {                 //чтобы произошла рекомпозиция нужно чтобы лист изменился
-                if (it.uuid == card.uuid) {
-                    it.copy(isOpen = true)
-                } else {
-                    it
+            cardsFlow.value =
+                cardsFlow.value.map {                 //чтобы произошла рекомпозиция нужно чтобы лист изменился
+                    if (it.uuid == card.uuid) {
+                        it.copy(isOpen = true)
+                    } else {
+                        it
+                    }
                 }
-            }
         }
 
         when (result) {
@@ -104,10 +102,12 @@ class GameViewModel @Inject constructor(
             Result.FirstCardClick -> {
                 firstCard = card
             }
+
             Result.RightCards -> {
                 count++
                 firstCard = null
             }
+
             Result.WrongCards -> {
                 viewModelScope.launch {
                     delay(500)
@@ -119,6 +119,7 @@ class GameViewModel @Inject constructor(
                             it
                         }
                     }
+
                     firstCard = null
                 }
             }
@@ -150,8 +151,8 @@ class GameViewModel @Inject constructor(
 }
 
 private sealed interface Result {
-    data object OpenCardClick: Result
-    data object FirstCardClick: Result
-    data object WrongCards: Result
-    data object RightCards: Result
+    data object OpenCardClick : Result
+    data object FirstCardClick : Result
+    data object WrongCards : Result
+    data object RightCards : Result
 }

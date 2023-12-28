@@ -12,9 +12,9 @@ class DataSource @Inject constructor() {
         Diamond(R.drawable.orange),
         Diamond(R.drawable.pink_circle),
         Diamond(R.drawable.purple_circle),
-        Diamond(R.drawable.red_circle),
-        Diamond(R.drawable.teal_circle),
-        Diamond(R.drawable.white_circle),
-        Diamond(R.drawable.yellow_circle),
+//        Diamond(R.drawable.red_circle),
+//        Diamond(R.drawable.teal_circle),
+//        Diamond(R.drawable.white_circle),
+//        Diamond(R.drawable.yellow_circle),
     )
 }

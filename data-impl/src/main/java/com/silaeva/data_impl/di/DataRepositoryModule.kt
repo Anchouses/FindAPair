@@ -1,18 +1,17 @@
 package com.silaeva.data_impl.di
 
 import com.silaeva.data_impl.data.repository.RepositoryImpl
-import com.silaeva.data_impl.data.repository.RepositoryInterface
+import com.silaeva.data_impl.data.repository.DataRepositoryInterface
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
-import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.components.SingletonComponent
 
 
 @Module
-@InstallIn(ActivityComponent::class, ViewModelComponent::class)
+@InstallIn(SingletonComponent::class)
 interface DataRepositoryModule {
 
     @Binds
-    fun bindDataRepository(impl: RepositoryImpl): RepositoryInterface
+    fun bindDataRepository(impl: RepositoryImpl): DataRepositoryInterface
 }

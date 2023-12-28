@@ -1,26 +1,22 @@
 package com.silaeva.data_impl.data.repository
 
+import android.app.Application
 import android.content.Context
+import androidx.room.Dao
 import androidx.room.Room
+import com.silaeva.data_impl.data.database.ScoreDao
 import com.silaeva.data_impl.data.database.ScoreDatabase
 import com.silaeva.data_impl.data.datamodel.Score
 import kotlinx.coroutines.flow.Flow
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
+import javax.inject.Inject
 
 const val DATABASE_NAME = "Score"
 
-class RepositoryImpl (
-    context: Context
-): RepositoryInterface {
-
-    private val database: ScoreDatabase = Room.databaseBuilder(
-        context.applicationContext,
-        ScoreDatabase::class.java,
-        DATABASE_NAME
-    ).build()
-
-    private val scoreDao = database.scoreDao()
+class RepositoryImpl @Inject constructor (
+    private val scoreDao: ScoreDao
+): DataRepositoryInterface {
 
     private val executor: Executor = Executors.newSingleThreadExecutor()
     override fun getScore(): Flow<Score> {
@@ -38,4 +34,19 @@ class RepositoryImpl (
             scoreDao.updateScore(score)
         }
     }
+
+//    companion object {
+//        private var INSTANCE: RepositoryImpl? = null
+//
+//        fun initialize(context: Context) {
+//            if (INSTANCE == null) {
+//                INSTANCE = RepositoryImpl()
+//            }
+//        }
+//
+//        fun get(): RepositoryImpl {
+//            return INSTANCE ?:
+//            throw IllegalStateException("where your repository?")
+//        }
+//    }
 }

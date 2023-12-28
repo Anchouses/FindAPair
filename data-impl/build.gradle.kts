@@ -46,9 +46,6 @@ android {
 
 dependencies {
 
-
-    implementation(project(":game-impl"))
-
     val composeBom = platform(libs.android.compose.bom)
     implementation(composeBom)
     androidTestImplementation(composeBom)
@@ -63,9 +60,9 @@ dependencies {
     implementation(libs.lifecycle.livedata.ktx)
 
     implementation (libs.androidx.room.runtime)
-    annotationProcessor (libs.androidx.room.compiler)
+    //annotationProcessor (libs.androidx.room.compiler)
+    implementation (libs.androidx.room.ktx)
     kapt (libs.androidx.room.runtime)
-
 
     implementation(libs.cicerone)
 

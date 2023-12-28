@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ScoreDao {
 
-    @Query("SELECT * FROM Score")
+    @Query("SELECT * FROM scope")
     fun getScore(): Flow<Score>
 
     @Insert
@@ -18,5 +18,4 @@ interface ScoreDao {
 
     @Update
     fun updateScore(score: Score)
-
 }
