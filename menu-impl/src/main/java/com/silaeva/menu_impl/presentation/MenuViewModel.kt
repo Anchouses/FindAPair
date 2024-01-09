@@ -1,5 +1,6 @@
 package com.silaeva.menu_impl.presentation
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.silaeva.data_impl.data.ScoreInteractor
 import com.silaeva.data_impl.data.datamodel.Score
@@ -22,5 +23,6 @@ class MenuViewModel @Inject constructor(
 
     fun onPlayButtonClick() {
         gameNavigator.navigateToGame()
+        Log.d("begin", "begin")
     }
 }

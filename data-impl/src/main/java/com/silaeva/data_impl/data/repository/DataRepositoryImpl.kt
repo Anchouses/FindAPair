@@ -2,6 +2,7 @@ package com.silaeva.data_impl.data.repository
 
 import android.app.Application
 import android.content.Context
+import android.util.Log
 import androidx.room.Dao
 import androidx.room.Room
 import com.silaeva.data_impl.data.database.ScoreDao
@@ -19,19 +20,22 @@ class RepositoryImpl @Inject constructor (
 ): DataRepositoryInterface {
 
     private val executor: Executor = Executors.newSingleThreadExecutor()
-    override fun getScore(): Flow<Score> {
+    override fun getScore(): Flow<List<Score>> {
         return scoreDao.getScore()
     }
 
-    override fun addScore(score: Score) {
+    override fun addScore(score: Int) {
+        val saveScore = Score(id = null, score = score)
+        Log.d("score", "$saveScore")
         executor.execute {
-            scoreDao.addScore(score)
+            scoreDao.addScore(saveScore)
         }
     }
 
-    override fun updateScore(score: Score) {
+    override fun updateScore(score: Int) {
+        val updateScore = Score(id = null, score = score)
         executor.execute {
-            scoreDao.updateScore(score)
+            scoreDao.updateScore(updateScore)
         }
     }
 
@@ -40,7 +44,7 @@ class RepositoryImpl @Inject constructor (
 //
 //        fun initialize(context: Context) {
 //            if (INSTANCE == null) {
-//                INSTANCE = RepositoryImpl()
+//                INSTANCE = RepositoryImpl(context)
 //            }
 //        }
 //

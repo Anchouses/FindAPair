@@ -60,9 +60,9 @@ dependencies {
     implementation(libs.cicerone)
 
     implementation (libs.androidx.room.runtime)
-    //annotationProcessor (libs.androidx.room.compiler)
     implementation (libs.androidx.room.ktx)
-    kapt (libs.androidx.room.runtime)
+    annotationProcessor (libs.androidx.room.compiler)
+    kapt (libs.androidx.room.compiler)
 
     implementation(libs.hilt)
     implementation(project(":menu-impl"))

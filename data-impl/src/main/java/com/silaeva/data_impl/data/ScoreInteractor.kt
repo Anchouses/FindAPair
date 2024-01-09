@@ -6,13 +6,13 @@ import kotlinx.coroutines.flow.Flow
 
 class ScoreInteractor (private val repository: DataRepositoryInterface) {
 
-    fun getScore(): Flow<Score> {
+    fun getScore(): Flow<List<Score>> {
         return repository.getScore()
     }
-    fun addScore(score: Score) {
+    fun addScore(score: Int) {
         return repository.addScore(score)
     }
-    fun updateScore(score: Score){
+    fun updateScore(score: Int){
         return repository.updateScore(score)
     }
 }

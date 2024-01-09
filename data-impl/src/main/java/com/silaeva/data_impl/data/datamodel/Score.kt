@@ -5,10 +5,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.UUID
 
-@Entity(tableName = "scope")
+@Entity(tableName = "score")
 data class Score(
     @PrimaryKey(autoGenerate = true)
-    var id: UUID = UUID.randomUUID(),
+    var id: Int?,
     @ColumnInfo
     var score: Int
 )

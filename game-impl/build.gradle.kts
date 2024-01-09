@@ -72,9 +72,9 @@ dependencies {
     kapt(libs.hilt.compiler)
 
     implementation (libs.androidx.room.runtime)
-    //annotationProcessor (libs.androidx.room.compiler)
     implementation (libs.androidx.room.ktx)
-    kapt (libs.androidx.room.runtime)
+    annotationProcessor (libs.androidx.room.compiler)
+    kapt (libs.androidx.room.compiler)
 
     testImplementation(libs.test.junit)
     androidTestImplementation(libs.test.junit.android)

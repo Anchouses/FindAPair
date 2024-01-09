@@ -37,7 +37,7 @@ import com.silaeva.game_impl.R
 @Composable
 fun GameScreen(viewModel: GameViewModel) {
 
-    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+    Column {
         Column() {
             Row(
                 modifier = Modifier

@@ -43,6 +43,7 @@ class GameViewModel @Inject constructor(
     private var wait: Job? = null
 
     val cardsFlow = MutableStateFlow(randomDiamondList)
+
     private var firstCard: Card? = null
 
     fun startTimer() {
@@ -71,16 +72,16 @@ class GameViewModel @Inject constructor(
         wait = viewModelScope.launch {
             delay(2000)
             onTimeOut()
+            scoreSave(score.intValue)
         }
     }
 
     private fun onTimeOut() {
-        scoreSave()
         endGameNavigator.navigateToEnd()
     }
 
-    private fun scoreSave() {
-        scoreRepositoryImpl.addScore(Score(score = score.intValue))
+    private fun scoreSave(scoreInt: Int) {
+        scoreRepositoryImpl.addScore(scoreInt)
     }
 
     fun onCardClick(card: Card) {
@@ -119,7 +120,6 @@ class GameViewModel @Inject constructor(
                             it
                         }
                     }
-
                     firstCard = null
                 }
             }
