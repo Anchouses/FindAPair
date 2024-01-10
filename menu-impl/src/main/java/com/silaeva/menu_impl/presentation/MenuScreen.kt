@@ -26,7 +26,6 @@ import com.silaeva.common_ui.CardContainer
 import com.silaeva.common_ui.ScoreField
 import com.silaeva.common_ui.typography.Colors
 import com.silaeva.common_ui.typography.Typography
-import com.silaeva.data_impl.data.datamodel.Score
 import com.silaeva.menu_impl.R
 
 

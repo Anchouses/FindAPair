@@ -8,8 +8,6 @@ import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 import javax.inject.Inject
 
-const val DATABASE_NAME = "Score"
-
 class RepositoryImpl @Inject constructor (
     private val scoreDao: ScoreDao
 ): DataRepositoryInterface {
