@@ -1,12 +1,7 @@
 package com.silaeva.data_impl.data.repository
 
-import android.app.Application
-import android.content.Context
 import android.util.Log
-import androidx.room.Dao
-import androidx.room.Room
 import com.silaeva.data_impl.data.database.ScoreDao
-import com.silaeva.data_impl.data.database.ScoreDatabase
 import com.silaeva.data_impl.data.datamodel.Score
 import kotlinx.coroutines.flow.Flow
 import java.util.concurrent.Executor
@@ -38,19 +33,4 @@ class RepositoryImpl @Inject constructor (
             scoreDao.updateScore(updateScore)
         }
     }
-
-//    companion object {
-//        private var INSTANCE: RepositoryImpl? = null
-//
-//        fun initialize(context: Context) {
-//            if (INSTANCE == null) {
-//                INSTANCE = RepositoryImpl(context)
-//            }
-//        }
-//
-//        fun get(): RepositoryImpl {
-//            return INSTANCE ?:
-//            throw IllegalStateException("where your repository?")
-//        }
-//    }
 }

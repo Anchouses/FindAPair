@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -30,8 +31,8 @@ fun EndGameScreen(
     viewModel: EndGameViewModel
 ) {
 
-    val scoreList = viewModel.scoreList
-    val lastScore = scoreList.last().score
+    val scoreList = viewModel.flowScoreList.collectAsState(initial = emptyList())
+    val lastScore = scoreList.value.lastOrNull()?.score
 
     Column(
         modifier = Modifier.padding(24.dp),

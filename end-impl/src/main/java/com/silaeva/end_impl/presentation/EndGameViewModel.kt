@@ -1,5 +1,6 @@
 package com.silaeva.end_impl.presentation
 
+import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.terrakok.cicerone.Router
@@ -23,13 +24,13 @@ class EndGameViewModel @Inject constructor(
     var scoreList: List<Score> = emptyList()
     val flowScoreList: Flow<List<Score>> = dataRepositoryImpl.getScore()
 
-    init {
-        viewModelScope.launch {
-            flowScoreList.collect() {
-                scoreList = it
-            }
-        }
-    }
+//    init {
+//        viewModelScope.launch {
+//            flowScoreList.collect() {
+//                scoreList = it
+//            }
+//        }
+//    }
 
     fun onBackButtonClick() {
         gameNavigator.navigateToGame()
