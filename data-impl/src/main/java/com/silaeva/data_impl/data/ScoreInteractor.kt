@@ -1,19 +1,18 @@
 package com.silaeva.data_impl.data
 
 import com.silaeva.data_impl.data.datamodel.Score
-import com.silaeva.data_impl.data.repository.RepositoryInterface
+import com.silaeva.data_impl.data.repository.DataRepositoryInterface
 import kotlinx.coroutines.flow.Flow
-import javax.inject.Inject
 
-class ScoreInteractor (private val repository: RepositoryInterface) {
+class ScoreInteractor (private val repository: DataRepositoryInterface) {
 
-    fun getScore(): Flow<Score> {
+    fun getScore(): Flow<List<Score>> {
         return repository.getScore()
     }
-    fun addScore(score: Score) {
+    fun addScore(score: Int) {
         return repository.addScore(score)
     }
-    fun updateScore(score: Score){
+    fun updateScore(score: Int){
         return repository.updateScore(score)
     }
 }

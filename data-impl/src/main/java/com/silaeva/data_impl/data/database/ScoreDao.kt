@@ -10,13 +10,12 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ScoreDao {
 
-    @Query("SELECT * FROM Score")
-    fun getScore(): Flow<Score>
+    @Query("SELECT * FROM score")
+    fun getScore(): Flow<List<Score>>
 
     @Insert
     fun addScore(score: Score)
 
     @Update
     fun updateScore(score: Score)
-
 }

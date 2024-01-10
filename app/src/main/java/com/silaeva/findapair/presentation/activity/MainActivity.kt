@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)

@@ -36,8 +36,8 @@ object Typography {
     )
 
     val congratulation = TextStyle(
-        fontSize = 30.sp,
-        lineHeight = 34.sp,
+        fontSize = 28.sp,
+        lineHeight = 32.sp,
         fontWeight = FontWeight(700),
         color = Color(0xFF000000)
     )

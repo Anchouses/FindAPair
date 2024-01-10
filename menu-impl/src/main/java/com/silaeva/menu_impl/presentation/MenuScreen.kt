@@ -16,6 +16,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -44,12 +45,12 @@ fun MenuScreen (
                 .align(Alignment.End)
                 .padding(24.dp)
         ) {
-            //val score by viewModel.score.collectAsState(initial = Score(0, 0))
-
-            Box { ScoreField(text = "${viewModel.score}") }
+            val scoreList = viewModel.scoreList.collectAsState(initial = emptyList())
+            val fullScore = scoreList.value.sumOf { it.score }
+            Box { ScoreField(text = "$fullScore") }
         }
 
-        Spacer(modifier = Modifier.height(130.dp))
+        Spacer(modifier = Modifier.height(100.dp))
 
         CardContainer(
             modifier = Modifier

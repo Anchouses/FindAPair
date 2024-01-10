@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -29,6 +30,10 @@ import com.silaeva.end_impl.R
 fun EndGameScreen(
     viewModel: EndGameViewModel
 ) {
+
+    val scoreList = viewModel.flowScoreList.collectAsState(initial = emptyList())
+    val lastScore = scoreList.value.lastOrNull()?.score
+
     Column(
         modifier = Modifier.padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -62,7 +67,7 @@ fun EndGameScreen(
                 modifier = Modifier
                     .padding(top = 24.dp)
                     .align(Alignment.CenterHorizontally),
-            ) { ScoreField(text = "100") }
+            ) { ScoreField(text = "$lastScore") }
         }
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -102,4 +107,3 @@ fun EndGameScreen(
         }
     }
 }
-

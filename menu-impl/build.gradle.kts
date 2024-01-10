@@ -68,8 +68,9 @@ dependencies {
     implementation(libs.lifecycle.livedata.ktx)
 
     implementation (libs.androidx.room.runtime)
+    implementation (libs.androidx.room.ktx)
     annotationProcessor (libs.androidx.room.compiler)
-    kapt (libs.androidx.room.runtime)
+    kapt (libs.androidx.room.compiler)
 
     implementation(libs.cicerone)
 
